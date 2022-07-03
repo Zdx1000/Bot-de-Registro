@@ -50,5 +50,20 @@ async def registrar(ctx):
   await interacao.send(embed=registro,
                        components=[[Button(label="Masculino", custom_id="M", emnoji"♂️", style=2),
                                     Button(label="Feminino", custom_id="F", emoji"♀️", style=2),
-                                    Button(label="Não-Binário", custom_id"BI", emoji=bot.get_emoji(992679376825106512)),
-                                    ]])
+                                    Button(label="Não-Binário", custom_id="BI", emoji=bot.get_emoji(992679376825106512)),
+                                    Button(label="Avançar", custom_id="AV", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.blue, disabled=True),
+                                    Button(label="Voltar", custom_id="VL", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.red, disabled=True)]])
+  
+  interacao2 = await bot.wait_for("button_click", check=lambda i: i.custom_id in ["M","F","BI"])
+  
+  if interacao2.custom_id == "M":
+    role = ctx.author.guild.get_role(id_cargo)
+    await ctx.author.add_roles(role)
+    
+   if interacao2.custom_id == "F":
+    role2 = ctx.author.guild.get_role(id_cargo)
+    await ctx.author.add_roles(role2)
+    
+   if interacao2.custom_id == "BI":
+    role3 = ctx.author.guild.get_role(id_cargo)
+    await ctx.author.add_roles(role3)
