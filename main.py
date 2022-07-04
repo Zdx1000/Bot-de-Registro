@@ -67,3 +67,92 @@ async def registrar(ctx):
    if interacao2.custom_id == "BI":
     role3 = ctx.author.guild.get_role(id_cargo)
     await ctx.author.add_roles(role3)
+   
+    await interacao2.send(embed=idade, components=[[Button(label=" -18", custom_id="MN", emoji=bot.get_emoji(992689019429343272)),
+                                                    Button(label=" +18", custom_id="MR", emoji=bot.get_emoji(992688991876960317)),
+                                                    Button(label="Avançar", custom_id="AV", emoji=bot.get_emoji(985174071559979068),style=ButtonStyle.blue, disabled=True),
+                                                    Button(label="Voltar", custom_id="VL", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.red, disabled=True)]])
+
+    interacao3 = await bot.wait_for("button_click", check=lambda i: i.custom_id in ["MN", "MR"])
+
+    if interacao3.custom_id == "MN":
+        role4 = ctx.author.guild.get_role(992691097010720798)
+        await ctx.author.add_roles(role4)
+
+    if interacao3.custom_id == "MR":
+        role5 = ctx.author.guild.get_role(992691011417550960)
+        await ctx.author.add_roles(role5)
+
+    stats = discord.Embed(title="Qual é o seu status de relacionamento ?", description="Cargos:\n"
+                                                                                       "<@&992704584529235978> <@&992705137653059594> <@&992705344323207290> <@&992705565266554882>",
+                          color=0x030303)
+    await interacao3.send(embed=stats, components=[[Button(label="Solteiro (a)", custom_id="S", emoji=bot.get_emoji(992707278430031923)),
+                                                    Button(label="Enrolado (a)", custom_id="E", emoji=bot.get_emoji(992709413821497385)),
+                                                    Button(label="Namorando", custom_id="N", emoji=bot.get_emoji(992707982641074268)),
+                                                    Button(label="Casado (a)", custom_id="C", emoji=bot.get_emoji(992710539228745840))],
+                                                   [Button(label="Avançar", custom_id="AV", emoji=bot.get_emoji(985174071559979068),style=ButtonStyle.blue, disabled=True),
+                                                    Button(label="Voltar", custom_id="VL", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.red, disabled=True)]])
+
+    interacao4 = await bot.wait_for("button_click", check=lambda i: i.custom_id in ["S", "E", "N", "C"])
+
+    if interacao4.custom_id == "S":
+        role6 = ctx.author.guild.get_role(992704584529235978)
+        await ctx.author.add_roles(role6)
+
+    if interacao4.custom_id == "E":
+        role7 = ctx.author.guild.get_role(992705137653059594)
+        await ctx.author.add_roles(role7)
+
+    if interacao4.custom_id == "N":
+        role8 = ctx.author.guild.get_role(992705344323207290)
+        await ctx.author.add_roles(role8)
+
+    if interacao4.custom_id == "C":
+        role9 = ctx.author.guild.get_role(992705565266554882)
+        await ctx.author.add_roles(role9)
+
+    regiao = discord.Embed(title="Qual é a sua região ?", description="Cargos: \n"
+                                                                      "<@&992720432039997471> <@&992720567855759371> <@&992720605369614366> <@&992720665897619496> <@&992720707089866782> <@&992720761557110864>",
+                           color=0x030303)
+
+    await interacao4.send(embed=regiao, components=[[Button(label="Sudeste", custom_id="SU", emoji="↘️"),
+                                                     Button(label="Sul", custom_id="SL", emoji="⬇️"),
+                                                     Button(label="Centro-Oeste", custom_id="CO", emoji="⏺️"),
+                                                     Button(label="Norte", custom_id="NO", emoji="⬆️"),
+                                                     Button(label="Nordeste", custom_id="ND", emoji="↗️")],
+                                                    [Button(label="Estrangeiro", custom_id="ES", emoji="🌐"),
+                                                     Button(label="Avançar", custom_id="AV", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.blue, disabled=True),
+                                                     Button(label="Voltar", custom_id="VL", emoji=bot.get_emoji(985174071559979068), style=ButtonStyle.red, disabled=True)]])
+
+    interacao5 = await bot.wait_for("button_click", check=lambda i: i.custom_id in ["SU", "SL", "CO", "NO", "ND", "ES"])
+
+    if interacao5.custom_id == "SU":
+        role10 = ctx.author.guild.get_role(992720432039997471)
+        await ctx.author.add_roles(role10)
+
+    if interacao5.custom_id == "SL":
+        role11 = ctx.author.guild.get_role(992720567855759371)
+        await ctx.author.add_roles(role11)
+
+    if interacao5.custom_id == "CO":
+        role12 = ctx.author.guild.get_role(992720605369614366)
+        await ctx.author.add_roles(role12)
+
+    if interacao5.custom_id == "NO":
+        role13 = ctx.author.guild.get_role(992720665897619496)
+        await ctx.author.add_roles(role13)
+
+    if interacao5.custom_id == "ND":
+        role14 = ctx.author.guild.get_role(992720707089866782)
+        await ctx.author.add_roles(role14)
+
+    if interacao5.custom_id == "ES":
+        role15 = ctx.author.guild.get_role(992720761557110864)
+        await ctx.author.add_roles(role15)
+
+    fim = discord.Embed(title="<a:certo_:992727485269680188> Registro feito com sucesso!", color=0x030303)
+    await interacao5.send(embed=fim)
+
+    
+    
+bot.run("Token do seu bot")
